@@ -1,0 +1,40 @@
+<template name="sitesList">
+  <div class="page">
+    <header>
+      <h1>{{i18n "site.list.title"}}</h1>
+    </header>
+    <div class="body">
+      {{#each sites}}
+        {{> siteItem}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="siteItem">
+  <div class="siteItem">
+    <a href="{{pathFor 'sitePage'}}">{{title}}</a>
+  </div>
+</template>
+
+<template name="sitePage">
+  <div class="page">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <div class="body">
+      <p>{{message}}</p>
+      <div class="panel panel-info">
+        <div class="panel-body">
+        {{#if isOwner}}
+          <a class="btn btn-default" href="#">{{i18n "button.setup"}}</a>
+        {{else}}
+          <p>{{owner.name}}</p>
+          <button id="channelOpen" class="btn btn-primary">{{i18n "site.button.talkNow"}}</button>
+        {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
